@@ -1,0 +1,27 @@
+<nav th:fragment="menu-principal" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <a class="navbar-brand" th:href="@{/}">Biblioteca</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li>
+                <a class="nav-link" th:href="@{/autor/listarAutor}">Autores</a>
+            </li>
+            <li>
+                <a class="nav-link" th:href="@{/localidad/listarLocalidad}">Localidades</a>
+            </li>
+            <li>
+                <a class="nav-link" th:href="@{/persona/listarPersona}">Personas</a>
+            </li>
+            <li>
+                <a class="nav-link" th:href="@{/domicilio/listarDomicilio}">Domicilios</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>

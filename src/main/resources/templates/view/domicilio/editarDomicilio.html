@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Editar Persona</title>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<header th:insert="~{fragments/menubody :: menu-principal}"></header>
+
+<main role="main">
+    <hr>
+    <div class="container">
+
+        <div class="card">
+            <h4 class="card-header"><strong>Editar Persona</strong></h4>
+            <div class="card-body">
+
+                <form action="/persona/aceptarEditPersona" method="POST">
+
+                    <p th:if="${msgExito != null}" th:text="${msgExito}" style="color:green;"></p>
+                    <p th:if="${msgError != null}" th:text="${msgError}" style="color: red;"></p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+
+                                <input type="hidden" name="id" th:value="${persona.id != null ? persona.id : 0}">
+
+                                <label for="nombre">Nombre</label>
+                                <input type="text" name="nombre" th:value="${persona.nombre}"
+                                       th:disabled="${isDisabled}" class="form-control"
+                                       placeholder="Escriba el nombre de la persona" required="required">
+
+                                <label for="apellido">Apellido</label>
+                                <input type="text" name="apellido" th:value="${persona.apellido}"
+                                       th:disabled="${isDisabled}" class="form-control"
+                                       placeholder="Escriba el apellido de la persona" required="required">
+
+                                <label for="dni">DNI</label>
+                                <input type="text" name="dni" th:value="${persona.dni != 0 ? persona.dni : ''}"
+                                       th:disabled="${isDisabled}" class="form-control"
+                                       placeholder="Escriba el DNI de la persona" pattern="^[1-9][0-9]*$"
+                                       required="required" title="El DNI debe ser un número mayor a 0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="d-grid gap-2 float-right justify-content-md-end">
+                        <button type="submit" title="Guardar el registro." class="btn btn-primary"
+                                th:disabled="${isDisabled}">ACEPTAR</button>
+                        <a class="btn btn-primary" th:href="@{/persona/cancelarEditPersona}"
+                           role="button">CANCELAR</a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer th:insert="~{fragments/footer :: pie-pagina}" class="footer"></footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+
+</html>
